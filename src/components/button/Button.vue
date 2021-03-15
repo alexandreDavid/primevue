@@ -1,7 +1,7 @@
 <template>
     <button :class="buttonClass" type="button" v-ripple>
         <slot>
-            <span v-if="icon" :class="iconClass"></span>
+            <component :is="iconTag" v-if="icon" :class="iconClass"></component>
             <span class="p-button-label">{{label||'&nbsp;'}}</span>
             <span v-if="badge" :class="badgeStyleClass">{{badge}}</span>
         </slot>
@@ -22,6 +22,10 @@ export default {
         iconPos: {
             type: String,
             default: 'left'
+        },
+        iconTag: {
+            type: String,
+            default: 'span'
         },
         badge: {
             type: String
